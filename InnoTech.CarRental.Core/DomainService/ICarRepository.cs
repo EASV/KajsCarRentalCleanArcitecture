@@ -10,5 +10,7 @@ namespace InnoTech.CarRental.Core.DomainService
         IEnumerable<Car> ReadCars();
 
         Car CreateCar(Car car);
+
+        void DeleteCar(int id);
     }
 }

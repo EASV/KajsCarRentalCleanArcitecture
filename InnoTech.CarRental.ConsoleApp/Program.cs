@@ -16,7 +16,7 @@ namespace InnoTech.CarRental.ConsoleApp
             FakeDB.InitData();
             
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddScoped<ICarRepository, CarFileRepository>();
+            serviceCollection.AddScoped<ICarRepository, CarRepository>();
             serviceCollection.AddScoped<ICarService, CarService>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();

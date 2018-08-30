@@ -22,5 +22,15 @@ namespace InnoTech.CarRental.Infrastructure.Data
             FakeDB.Cars = cars;
             return car;
         }
+
+        public void DeleteCar(int id)
+        {
+            var cars = FakeDB.Cars.ToList();
+            var carToDelete = cars.FirstOrDefault(car => car.Id == id);
+            cars.Remove(carToDelete);
+            FakeDB.Cars = cars;
+            
+            //ctx.Cars.Delete(id)
+        }
     }
 }

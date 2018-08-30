@@ -23,6 +23,11 @@ namespace InnoTech.CarRental.Infrastructure.Data
             return car;
         }
 
+        public void DeleteCar(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         private void SaveCars(IEnumerable<Car> cars)
         {
             var json = JsonConvert.SerializeObject(cars);

@@ -18,12 +18,12 @@ namespace InnoTech.CarRental.ConsoleApp
         
         void StartUI()
         {
-
             string[] menuItems = {
                 "List All Cars",
                 "Add Car",
                 "Delete Car",
                 "Edit Car",
+                "5 Cheapest Cars",
                 "Exit"
             };
 
@@ -40,8 +40,13 @@ namespace InnoTech.CarRental.ConsoleApp
                         AddCar();
                         break;
                     case 3:
+                        DeleteCar();
                         break;
                     case 4:
+                        Console.WriteLine("Update Car");
+                        break;
+                    case 5:
+                        Console.WriteLine("5 Cheapest Cars");
                         break;
                     default:
                         break;
@@ -51,6 +56,18 @@ namespace InnoTech.CarRental.ConsoleApp
             Console.WriteLine("Bye bye!");
 
             Console.ReadLine();
+        }
+
+        private void DeleteCar()
+        {
+            int id;
+            while (!int.TryParse(Console.ReadLine(), out id)
+                   || id < 1)
+            {
+                Console.WriteLine("Please select a number above 0");
+            }
+            _carService.DeleteCar(id);
+            Console.WriteLine("Car with id {0} Deleted", id);
         }
 
         private void AddCar()
@@ -82,9 +99,8 @@ namespace InnoTech.CarRental.ConsoleApp
         {
             Console.WriteLine("Select What you want to do:\n");
 
-            for (int i = 0; i < menuItems.Length; i++)
+            for (var i = 0; i < menuItems.Length; i++)
             {
-                //Console.WriteLine((i + 1) + ":" + menuItems[i]);
                 Console.WriteLine($"{(i + 1)}: {menuItems[i]}");
             }
 

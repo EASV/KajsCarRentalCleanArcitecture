@@ -34,6 +34,15 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
             return _carRepository.CreateCar(car);
         }
 
+        public void DeleteCar(int id)
+        {
+            if (id < 1)
+            {
+                throw new InvalidOperationException("Car Id needs to be larger then 0");
+            }
+            _carRepository.DeleteCar(id);
+        }
+
         public List<Car> GetCarsByModel()
         {
             return _carRepository.ReadCars()

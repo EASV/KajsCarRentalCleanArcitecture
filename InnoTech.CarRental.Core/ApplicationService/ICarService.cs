@@ -12,5 +12,7 @@ namespace InnoTech.CarRental.Core.ApplicationService
         List<Car> GetCars();
 
         Car AddCar(Car car);
+
+        void DeleteCar(int id);
     }
 }
