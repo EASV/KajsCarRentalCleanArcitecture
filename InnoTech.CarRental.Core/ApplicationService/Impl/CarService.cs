@@ -43,6 +43,13 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
             _carRepository.DeleteCar(id);
         }
 
+        public List<Car> Get3CheapestCars()
+        {
+            return _carRepository.ReadCars()
+                .OrderBy(car => car.Price).Take(3)
+                .ToList();
+        }
+
         public List<Car> GetCarsByModel()
         {
             return _carRepository.ReadCars()

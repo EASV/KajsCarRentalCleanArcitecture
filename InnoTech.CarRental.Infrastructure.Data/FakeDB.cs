@@ -17,16 +17,43 @@ namespace InnoTech.CarRental.Infrastructure.Data
                 Id = CarId++,
                 Color = "Blue",
                 Make = "Fiat",
-                Model = "Fiesta"
+                Model = "Fiesta",
+                Price = 20000
             };
             var car2 = new Car()
             {
                 Id = CarId++,
                 Color = "Green",
-                Make = "Volvo",
-                Model = "Upsa"
+                Make = "Volvo4",
+                Model = "Upsa",
+                Price = 50000
             };
-            Cars = new List<Car> { car1, car2 };
+            
+            var car3 = new Car()
+            {
+                Id = CarId++,
+                Color = "Green",
+                Make = "Volvo3",
+                Model = "Upsa",
+                Price = 10000000
+            };
+            var car4 = new Car()
+            {
+                Id = CarId++,
+                Color = "Green",
+                Make = "Volvo2",
+                Model = "Upsa",
+                Price = 209932
+            };
+            var car5 = new Car()
+            {
+                Id = CarId++,
+                Color = "Green",
+                Make = "Volvo1",
+                Model = "Upsa",
+                Price = 550000
+            };
+            Cars = new List<Car> { car1, car2, car3, car4, car5 };
         }
     }
 }

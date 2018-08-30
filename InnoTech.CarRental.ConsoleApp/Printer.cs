@@ -23,13 +23,13 @@ namespace InnoTech.CarRental.ConsoleApp
                 "Add Car",
                 "Delete Car",
                 "Edit Car",
-                "5 Cheapest Cars",
+                "3 Cheapest Cars",
                 "Exit"
             };
 
             var selection = ShowMenu(menuItems);
 
-            while (selection != 5)
+            while (selection != 6)
             {
                 switch (selection)
                 {
@@ -46,7 +46,7 @@ namespace InnoTech.CarRental.ConsoleApp
                         Console.WriteLine("Update Car");
                         break;
                     case 5:
-                        Console.WriteLine("5 Cheapest Cars");
+                        ShowCheapestCars();
                         break;
                     default:
                         break;
@@ -56,6 +56,15 @@ namespace InnoTech.CarRental.ConsoleApp
             Console.WriteLine("Bye bye!");
 
             Console.ReadLine();
+        }
+
+        private void ShowCheapestCars()
+        {
+            var list = _carService.Get3CheapestCars();
+            foreach (var car in list)
+            {
+                Console.WriteLine("Model: {0} Price: {1:N}",car.Model, car.Price);
+            }
         }
 
         private void DeleteCar()
@@ -87,6 +96,7 @@ namespace InnoTech.CarRental.ConsoleApp
             {
                 Console.WriteLine("Please select a number between 10.000 - 5.000.000");
             }
+
             car.Price = price;
             var carAdded = _carService.AddCar(car);
             if (carAdded.Id > 0)
