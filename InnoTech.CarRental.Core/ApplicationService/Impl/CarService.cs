@@ -15,9 +15,30 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
             _carRepository = carRepository;
         }
 
+        public Car GetCarInstance()
+        {
+            return new Car();
+        }
+
         public List<Car> GetCars()
         {
             return _carRepository.ReadCars().ToList();
+        }
+
+        public Car AddCar(Car car)
+        {
+            if (string.IsNullOrEmpty(car.Color))
+            {
+                throw new InvalidOperationException("Car needs a Color");
+            }
+            return _carRepository.CreateCar(car);
+        }
+
+        public List<Car> GetCarsByModel()
+        {
+            return _carRepository.ReadCars()
+                .Where(car => car.Model.Equals("Ford"))
+                .ToList();
         }
     }
 }

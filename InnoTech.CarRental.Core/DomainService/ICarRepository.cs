@@ -8,5 +8,7 @@ namespace InnoTech.CarRental.Core.DomainService
     public interface ICarRepository
     {
         IEnumerable<Car> ReadCars();
+
+        Car CreateCar(Car car);
     }
 }

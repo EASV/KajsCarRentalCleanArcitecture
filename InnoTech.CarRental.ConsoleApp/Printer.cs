@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using InnoTech.CarRental.Core.ApplicationService;
+using InnoTech.Core.Entities;
 
 namespace InnoTech.CarRental.ConsoleApp
 {
@@ -11,7 +12,91 @@ namespace InnoTech.CarRental.ConsoleApp
         public Printer(ICarService carService)
         {
             _carService = carService;
-            ShowAllCars();
+            StartUI();
+
+        }
+        
+        void StartUI()
+        {
+
+            string[] menuItems = {
+                "List All Cars",
+                "Add Car",
+                "Delete Car",
+                "Edit Car",
+                "Exit"
+            };
+
+            var selection = ShowMenu(menuItems);
+
+            while (selection != 5)
+            {
+                switch (selection)
+                {
+                    case 1:
+                        ShowAllCars();
+                        break;
+                    case 2:
+                        AddCar();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+                selection = ShowMenu(menuItems);
+            }
+            Console.WriteLine("Bye bye!");
+
+            Console.ReadLine();
+        }
+
+        private void AddCar()
+        {
+            var car = _carService.GetCarInstance();
+            Console.WriteLine("Type Car Color:");
+            car.Color = Console.ReadLine();
+            Console.WriteLine("Type Car Make:");
+            car.Make = Console.ReadLine();
+            Console.WriteLine("Type Car Model:");
+            car.Model = Console.ReadLine();
+            Console.WriteLine("Type Car Price:");
+            double price;
+            while (!double.TryParse(Console.ReadLine(), out price)
+                   || price > 5000000
+                   || price < 10000)
+            {
+                Console.WriteLine("Please select a number between 10.000 - 5.000.000");
+            }
+            car.Price = price;
+            var carAdded = _carService.AddCar(car);
+            if (carAdded.Id > 0)
+            {
+                Console.WriteLine("Car Added");
+            }
+        }
+
+        int ShowMenu(string[] menuItems)
+        {
+            Console.WriteLine("Select What you want to do:\n");
+
+            for (int i = 0; i < menuItems.Length; i++)
+            {
+                //Console.WriteLine((i + 1) + ":" + menuItems[i]);
+                Console.WriteLine($"{(i + 1)}: {menuItems[i]}");
+            }
+
+            int selection;
+            while (!int.TryParse(Console.ReadLine(), out selection)
+                   || selection < 1
+                   || selection > 5)
+            {
+                Console.WriteLine("Please select a number between 1-5");
+            }
+
+            return selection;
         }
 
         private void ShowAllCars()
@@ -19,7 +104,8 @@ namespace InnoTech.CarRental.ConsoleApp
             var listOfCars = _carService.GetCars();
             foreach (var car in listOfCars)
             {
-                Console.WriteLine("Id: " + car.Id + " Color: " + car.Color);
+                Console.WriteLine("Id: {0}\nColor: {1}\nMake: {2}\nModel: {3}\nPrice: {4:N}\n", 
+                    car.Id, car.Color, car.Make, car.Model, car.Price);
             }
         }
     }

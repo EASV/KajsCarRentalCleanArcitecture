@@ -8,19 +8,20 @@ namespace InnoTech.CarRental.Infrastructure.Data
 {
     public static class FakeDB
     {
+        public static int CarId = 1;
         public static IEnumerable<Car> Cars;
 
         public static void InitData() {
             var car1 = new Car()
             {
-                Id = 1,
+                Id = CarId++,
                 Color = "Blue",
                 Make = "Fiat",
                 Model = "Fiesta"
             };
             var car2 = new Car()
             {
-                Id = 2,
+                Id = CarId++,
                 Color = "Green",
                 Make = "Volvo",
                 Model = "Upsa"
