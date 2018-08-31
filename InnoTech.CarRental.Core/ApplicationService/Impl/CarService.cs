@@ -9,10 +9,14 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
 {
     public class CarService : ICarService
     {
-        private readonly ICarRepository _carRepository; 
-        public CarService(ICarRepository carRepository)
+        private readonly ICarRepository _carRepository;
+        private readonly ICarMakeRepository _carMakeRepository;
+
+        public CarService(ICarRepository carRepository,
+            ICarMakeRepository carMakeRepository)
         {
             _carRepository = carRepository;
+            _carMakeRepository = carMakeRepository;
         }
 
         public Car GetCarInstance()
@@ -22,7 +26,12 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
 
         public List<Car> GetCars()
         {
-            return _carRepository.ReadCars().ToList();
+            var listCars = _carRepository.ReadCars().ToList();
+            foreach (var car in listCars)
+            {
+                car.Make = _carMakeRepository.GetCarMakeById(car.Make.Id);
+            }
+            return listCars;
         }
 
         public Car AddCar(Car car)

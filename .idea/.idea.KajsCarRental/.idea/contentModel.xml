@@ -29,6 +29,7 @@
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="DomainService" t="Include">
+          <e p="ICarMakeRepository.cs" t="Include" />
           <e p="ICarRepository.cs" t="Include" />
         </e>
         <e p="InnoTech.CarRental.Core.csproj" t="IncludeRecursive" />
@@ -43,6 +44,7 @@
       <e p="InnoTech.CarRental.Infrastructure.Data" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="CarFileRepository.cs" t="Include" />
+        <e p="CarMakeRepository.cs" t="Include" />
         <e p="CarRepository.cs" t="Include" />
         <e p="FakeDB.cs" t="Include" />
         <e p="InnoTech.CarRental.Infrastructure.Data.csproj" t="IncludeRecursive" />
@@ -57,6 +59,7 @@
       <e p="InnoTech.Core.Entities" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Car.cs" t="Include" />
+        <e p="CarMake.cs" t="Include" />
         <e p="InnoTech.Core.Entities.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

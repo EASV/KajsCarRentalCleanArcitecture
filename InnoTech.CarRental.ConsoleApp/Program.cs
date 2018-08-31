@@ -17,6 +17,7 @@ namespace InnoTech.CarRental.ConsoleApp
             
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddScoped<ICarRepository, CarRepository>();
+            serviceCollection.AddScoped<ICarMakeRepository, CarMakeRepository>();
             serviceCollection.AddScoped<ICarService, CarService>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();

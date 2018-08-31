@@ -63,7 +63,7 @@ namespace InnoTech.CarRental.ConsoleApp
             var list = _carService.Get3CheapestCars();
             foreach (var car in list)
             {
-                Console.WriteLine("Model: {0} Price: {1:N}",car.Model, car.Price);
+                Console.WriteLine("Model: {0} Price: {1:N}",car.Make.Name, car.Price);
             }
         }
 
@@ -85,7 +85,14 @@ namespace InnoTech.CarRental.ConsoleApp
             Console.WriteLine("Type Car Color:");
             car.Color = Console.ReadLine();
             Console.WriteLine("Type Car Make:");
-            car.Make = Console.ReadLine();
+            int carId;
+            while (!int.TryParse(Console.ReadLine(), out carId))
+            {
+                Console.WriteLine("Write a Id for the Car Make");
+            }
+
+            car.Make = new CarMake() {Id = carId};
+            
             Console.WriteLine("Type Car Model:");
             car.Model = Console.ReadLine();
             Console.WriteLine("Type Car Price:");
@@ -131,7 +138,7 @@ namespace InnoTech.CarRental.ConsoleApp
             foreach (var car in listOfCars)
             {
                 Console.WriteLine("Id: {0}\nColor: {1}\nMake: {2}\nModel: {3}\nPrice: {4:N}\n", 
-                    car.Id, car.Color, car.Make, car.Model, car.Price);
+                    car.Id, car.Color, car.Make.Name, car.Model, car.Price);
             }
         }
     }

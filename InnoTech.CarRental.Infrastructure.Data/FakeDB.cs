@@ -11,21 +11,38 @@ namespace InnoTech.CarRental.Infrastructure.Data
         public static int CarId = 1;
         public static IEnumerable<Car> Cars;
 
+        public static int CarModelId = 1;
+        public static IEnumerable<CarMake> CarMakes;
+
         public static void InitData() {
+            var fiat = new CarMake()
+            {
+                Id = CarModelId++,
+                Name = "Fiat"
+            };
+            var toyota = new CarMake()
+            {
+                Id = CarModelId++,
+                Name = "Fluerenciance"
+            };
+            
+            
+            CarMakes = new List<CarMake> { fiat, toyota };
+            
             var car1 = new Car()
             {
                 Id = CarId++,
                 Color = "Blue",
-                Make = "Fiat",
-                Model = "Fiesta",
+                Model = "Uno",
+                Make = new CarMake(){Id = 1},
                 Price = 20000
             };
             var car2 = new Car()
             {
                 Id = CarId++,
                 Color = "Green",
-                Make = "Volvo4",
-                Model = "Upsa",
+                Model = "Punto",
+                Make = new CarMake(){Id = 1},
                 Price = 50000
             };
             
@@ -33,24 +50,24 @@ namespace InnoTech.CarRental.Infrastructure.Data
             {
                 Id = CarId++,
                 Color = "Green",
-                Make = "Volvo3",
-                Model = "Upsa",
+                Model = "Corolla",
+                Make = new CarMake(){Id = 2},
                 Price = 10000000
             };
             var car4 = new Car()
             {
                 Id = CarId++,
                 Color = "Green",
-                Make = "Volvo2",
-                Model = "Upsa",
+                Model = "Cyvic",
+                Make = new CarMake(){Id = 2},
                 Price = 209932
             };
             var car5 = new Car()
             {
                 Id = CarId++,
                 Color = "Green",
-                Make = "Volvo1",
-                Model = "Upsa",
+                Model = "Volvo1",
+                Make = new CarMake(){Id = 1},
                 Price = 550000
             };
             Cars = new List<Car> { car1, car2, car3, car4, car5 };
