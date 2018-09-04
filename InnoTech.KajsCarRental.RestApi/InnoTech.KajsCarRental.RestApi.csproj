@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InnoTech.CarRental.Core\InnoTech.CarRental.Core.csproj" />
+    <ProjectReference Include="..\InnoTech.CarRental.Infrastructure.Data\InnoTech.CarRental.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\InnoTech.Core.Entities\InnoTech.Core.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

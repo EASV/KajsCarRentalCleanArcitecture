@@ -34,6 +34,11 @@ namespace InnoTech.CarRental.Core.ApplicationService.Impl
             return listCars;
         }
 
+        public Car GetById(int id)
+        {
+            return _carRepository.ReadCars().FirstOrDefault(car => car.Id == id);
+        }
+
         public Car AddCar(Car car)
         {
             if (string.IsNullOrEmpty(car.Color))

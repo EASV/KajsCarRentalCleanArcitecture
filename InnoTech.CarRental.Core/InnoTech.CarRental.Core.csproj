@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InnoTech.Core.Entities\InnoTech.Core.Entities.csproj" />
+    <Compile Remove="DomainService\IRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="DomainService\IRepository.cs" />
+    <ProjectReference Include="..\InnoTech.Core.Entities\InnoTech.Core.Entities.csproj" />
   </ItemGroup>
 </Project>
